@@ -1,0 +1,17 @@
+---
+title: "Architecture"
+---
+
+Drifto operates as a query engine. This means that your data and model storage
+is not managed by Drifto. Rather, your data is stored either in your warehouse,
+data lake or simple storage buckets, and your models are stored in a model
+registry like MLflow. This enables Drifto to be a lightweight compute system on
+top of your existing data stack rather than a new system that needs a heavy
+integration and migration.
+
+When you issue a query to Drifto, the parser will split the query into
+analytical and neural subqueries. Drifto then forwards the analytical subquery
+to your underlying analytical query engine, such as your data warehouse, while
+processing the neural subquery on a specialized distributed AI fleet. When the
+subqueries complete, Drifto merges the two subquery results into one single
+result.

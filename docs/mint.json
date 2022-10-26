@@ -1,0 +1,51 @@
+{
+  "name": "Drifto",
+  "logo": {
+    "light": "/logo/logo.png",
+    "dark": "/logo/logo.png"
+  },
+  "favicon": "/favicon.png",
+  "colors": {
+    "primary": "#",
+    "light": "#",
+    "dark": "#",
+    "ultraLight": "#",
+    "ultraDark": "#"
+  },
+  "topbarCtaButton": {
+    "name": "Join Beta",
+    "url": "https://www.driftoml.com/contact"
+  },
+  "topbarLinks": [
+    {
+      "name": "Contact",
+      "url": "https://www.driftoml.com/contact"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "About Us",
+      "icon": "address-card",
+      "color": "#6365f1",
+      "url": "https://www.driftoml.com/about"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Overview",
+      "pages": [
+        "overview/welcome",
+        "overview/architecture",
+        "overview/environments",
+        "overview/infrastructure",
+        "overview/set-up"
+      ]
+    }
+  ],
+  "footerSocials": [
+    {
+      "type": "website",
+      "url": "https://www.driftoml.com/"
+    }
+  ]
+}
