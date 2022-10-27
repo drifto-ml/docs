@@ -6,11 +6,11 @@
   },
   "favicon": "/favicon.png",
   "colors": {
-    "primary": "#",
-    "light": "#",
-    "dark": "#",
-    "ultraLight": "#",
-    "ultraDark": "#"
+    "primary": "#8102FF",
+    "light": "#C69FFA",
+    "dark": "#4A0D93",
+    "ultraLight": "#F3EAFF",
+    "ultraDark": "#131826"
   },
   "topbarCtaButton": {
     "name": "Join Beta",
@@ -39,6 +39,29 @@
         "overview/environments",
         "overview/infrastructure",
         "overview/set-up"
+      ]
+    },
+    {
+      "group": "API",
+      "pages": [
+        "api-reference/overview",
+        {
+          "group": "Statements and Ops",
+          "pages": [
+            "api-reference/statements-and-ops/create-model",
+            "api-reference/statements-and-ops/predict",
+            "api-reference/statements-and-ops/sim",
+            "api-reference/statements-and-ops/summarize",
+            "api-reference/statements-and-ops/cluster",
+            "api-reference/statements-and-ops/medoids",
+            "api-reference/statements-and-ops/ask",
+            "api-reference/statements-and-ops/sentiment",
+            "api-reference/statements-and-ops/infer",
+            "api-reference/statements-and-ops/tag",
+            "api-reference/statements-and-ops/tokenize"
+          ]
+        },
+        "api-reference/current-limitations"
       ]
     }
   ],

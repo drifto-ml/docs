@@ -1,0 +1,37 @@
+---
+title: "Create Model"
+---
+
+`CREATE MODEL`: This statement allows you to invoke Drifto’s autoML
+capabilities. `CREATE MODEL` creates a new model that is stored in your model
+registry with the given name. By default, Drifto uses an internal MLflow
+instance, but can be configured to use an external instance as well.
+
+The `SELECT` subquery should return the full training dataset (held-out sets are
+automatically subsampled). Each row in the dataset corresponds to one data point
+for ML training and each column is a feature. The `WITH` clause is optional but
+without it, the training procedure will use a default configuration and expect
+the target column to be called `target`.
+
+**Syntax**:
+
+```
+CREATE MODEL<model> WITH (\*\*kwargs) AS <select>;
+```
+
+**Args**:
+
+- `target` (column or literal) – The name of the target column. Default =
+  `target`
+- `algo` (column or literal) – The training algorithm. Options = {`auto`, `gbm`,
+  `xgboost`, `glm`,`mlp`}. Default = `auto`
+- `ensemble` (bool) – Allow algorithms to generate ensembles. Default = false
+- `max_models` (int) – Number of models to search for in a training algorithm.
+  Default = 3
+- `seed` (int) – Random seed to use. Default = 1.
+
+**Example**:
+
+```
+CREATE MODEL mymodel WITH (target=y, max_models=10) AS SELECT \* FROM mydata;
+```

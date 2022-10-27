@@ -1,0 +1,20 @@
+---
+title: "Tag"
+---
+
+`TAG(‘a,b,c‘, X, **kwargs)`: This is a table-valued function (TVF). The first
+argument is a literal string that should be a comma-separated list of tags. X
+should be a table column. This operation runs a zero-shot NLP tagging operation
+that determines if each label in the first argument applies to each row in
+column X. The generated table includes confidence scores for each tag.
+
+**Args**:
+
+- multiclass (boolean) – Set to false if the tag labels mutually exclusive.
+  Default = true
+
+**Example**:
+
+```
+SELECT * FROM TAG(‘payments, rewards, delivery, menu, food quality’, app_reviews_table.app_review);
+```

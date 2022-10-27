@@ -1,0 +1,15 @@
+---
+title: "Infer"
+---
+
+`INFER(X,Y)`: This is an element-wise column operation. X should be a string
+literal and Y should be a column of texts. Infer computes the logical validity
+or correctness of statement X over each row in Y. A score greater than 0.8
+indicates a mild match, a score greater than 0.9 indicates a moderate match, and
+a score greater than 0.95 indicates a strong match.
+
+**Example**:
+
+```
+SELECT INFER(‘This person finds our product too expensive’, review_text) FROM product_reviews_table;
+```

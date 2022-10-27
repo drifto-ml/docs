@@ -1,0 +1,17 @@
+---
+title: "SIM"
+---
+
+`SIM (X,Y)`: This is an element-wise column operation. Computes symmetric
+semantic similarity between X and Y. Both arguments may be columns or literals.
+If an argument is a string literal, it broadcasts out to the column argument.
+The semantic similarity is a fuzzy match score that captures how similar the
+meanings between two texts are. It is always between -1 and 1. A score of
+greater than 0.3 indicates that two texts are similar and a score greater than
+0.4 indicates that two texts are highly similar.
+
+**Example**:
+
+```
+SELECT SIM(‘cat’, pets) FROM pets_table;
+```

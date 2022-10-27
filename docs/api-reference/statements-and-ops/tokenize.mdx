@@ -1,0 +1,23 @@
+---
+title: "Tokenize"
+---
+
+`TOKENIZE(X, **kwargs)`: This is an element-wise column operation. X should be a
+column of texts. This operation tokenizes long texts into token windows of a
+given length with a given stride. Alternatively, one can specify the exact
+number of splits to tokenize the long texts into. This operation returns an
+array-valued column that can be exploded with an unnesting operation.
+
+**Args**:
+
+- window (int) – The length of the tokenization window. Default = 1
+- stride (int) -- The stride of the tokenization. Default = 1
+- splits (int) -- An alternative way to specify the number of splits the
+  tokenizer produces. Default = -1.
+
+**Example**:
+
+```
+SELECT TOKENIZE(call_transcript) FROM calls_table;
+SELECT UNNEST(TOKENIZE(call_transcript)) FROM calls_table;
+```

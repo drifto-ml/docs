@@ -1,0 +1,15 @@
+---
+title: "Predict"
+---
+
+`PREDICT (T)`: This is a table-valued function (TVF). T should be a table and
+this function returns a table. It should be used in a `FROM` clause. This
+operation returns predictions and confidence scores for each row in T based on
+running model mymodel. The name mymodel can also be a string literal and it
+should be an exact match to the model name in the MLflow registry.
+
+**Example**:
+
+```
+SELECT \* FROM PREDICT(mymodel, datatable);
+```
