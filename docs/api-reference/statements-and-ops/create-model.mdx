@@ -15,7 +15,7 @@ the target column to be called `target`.
 
 **Syntax**:
 
-```
+```sql
 CREATE MODEL<model> WITH (\*\*kwargs) AS <select>;
 ```
 
@@ -32,6 +32,6 @@ CREATE MODEL<model> WITH (\*\*kwargs) AS <select>;
 
 **Example**:
 
-```
+```sql
 CREATE MODEL mymodel WITH (target=y, max_models=10) AS SELECT \* FROM mydata;
 ```

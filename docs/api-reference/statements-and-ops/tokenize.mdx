@@ -17,7 +17,7 @@ array-valued column that can be exploded with an unnesting operation.
 
 **Example**:
 
-```
+```sql
 SELECT TOKENIZE(call_transcript) FROM calls_table;
 SELECT UNNEST(TOKENIZE(call_transcript)) FROM calls_table;
 ```
