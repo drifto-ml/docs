@@ -28,7 +28,7 @@
   "anchors": [
     {
       "name": "About Us",
-      "icon": "address-card",
+      "icon": "users",
       "url": "https://www.driftoml.com/about"
     },
     {
