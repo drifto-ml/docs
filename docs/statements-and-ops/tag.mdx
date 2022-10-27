@@ -8,12 +8,13 @@ should be a table column. This operation runs a zero-shot NLP tagging operation
 that determines if each label in the first argument applies to each row in
 column X. The generated table includes confidence scores for each tag.
 
-**Args**:
+### Args
 
-- multiclass (boolean) – Set to false if the tag labels mutually exclusive.
-  Default = true
+<ParamField query="multiclass" type="boolean" default="true">
+  Set to false if the tag labels mutually exclusive.
+</ParamField>
 
-**Example**:
+### Examples
 
 ```sql
 SELECT * FROM TAG(‘payments, rewards, delivery, menu, food quality’, app_reviews_table.app_review);

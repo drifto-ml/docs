@@ -13,24 +13,35 @@ for ML training and each column is a feature. The `WITH` clause is optional but
 without it, the training procedure will use a default configuration and expect
 the target column to be called `target`.
 
-**Syntax**:
+### Syntax
 
 ```sql
 CREATE MODEL<model> WITH (\*\*kwargs) AS <select>;
 ```
 
-**Args**:
+### Args
 
-- `target` (column or literal) – The name of the target column. Default =
-  `target`
-- `algo` (column or literal) – The training algorithm. Options = {`auto`, `gbm`,
-  `xgboost`, `glm`,`mlp`}. Default = `auto`
-- `ensemble` (bool) – Allow algorithms to generate ensembles. Default = false
-- `max_models` (int) – Number of models to search for in a training algorithm.
-  Default = 3
-- `seed` (int) – Random seed to use. Default = 1.
+<ParamField query="target" type="column or literal" default="target">
+  The name of the target column
+</ParamField>
 
-**Example**:
+<ParamField query="algo" type="column or literal" default="auto">
+  The training algorithm. Options = `{("auto", "gbm", "xgboost", "glm", "mlp")}`
+</ParamField>
+
+<ParamField query="ensemble" type="bool" default="false">
+  Allow algorithms to generate ensembles.
+</ParamField>
+
+<ParamField query="max_models" type="int" default="3">
+  Number of models to search for in a training algorithm.
+</ParamField>
+
+<ParamField query="seed" type="int">
+  Random seed to use. Default = 1.
+</ParamField>
+
+### Example
 
 ```sql
 CREATE MODEL mymodel WITH (target=y, max_models=10) AS SELECT \* FROM mydata;

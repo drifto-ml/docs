@@ -1,17 +1,18 @@
 ---
-title: "Sentiment"
+title: "Summarize"
 ---
 
 `SUMMARIZE(X)`: This is an element-wise column operation. The column contains a
 corpus of texts, with each text occupying one row. This operation computes
 summaries for all texts in the corpus.
 
-**Args**:
+### Args
 
-- style (str) – The style and length of summary produced. Options =
-  `{‘paragraph’, ‘sentence’, ‘bullets’}`. Default = `passage`.
+<ParamField query="style" type="str" default="passage">
+  The style and length of summary produced.
+</ParamField>
 
-**Example**:
+### Example
 
 ```sql
 SELECT SUMMARIZE(review_text) FROM product_reviews_table;
