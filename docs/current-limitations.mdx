@@ -4,7 +4,7 @@ title: "Current Limitations"
 
 <Note>To be fixed soon!</Note>
 
-- Drifto ops are not usable in `JOIN` clauses yet.
-- Drifto TVFs do not allow subqueries inside of the TVF call. For example,
-  `SELECT * FROM PREDICT(SELECT * FROM table);` does not work yet.
-- Table-free queries that use Drifto ops are not yet supported (for example, `SELECT SIM('cat','dog')`).
+- Drifto ops in `JOIN` clauses are not supported yet.
+- Drifto table-valued functions (TVFs) do not allow subqueries inside of the TVF call. For example,
+  `SELECT * FROM PREDICT(SELECT * FROM table);` is not yet supported
+- Drifto ops are not yet supported in table-free queries (for example, `SELECT SIM('cat','dog')`).
