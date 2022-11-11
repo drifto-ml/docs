@@ -1,19 +1,40 @@
 ---
-title: "Summarize"
+title: "SUMMARIZE"
 ---
 
-`SUMMARIZE(X)`: This is an element-wise column operation. The column contains a
-corpus of texts, with each text occupying one row. This operation computes
-summaries for all texts in the corpus.
+<Warning>This is an experimental op and is subject to change.</Warning
+
+`SUMMARIZE(<X>, **kwargs)`: This operation summarizes the text in each row of the column. 
+This is an element-wise column operation, so each row will be summarized independently.
+If `<X>` is a string literal, it is broadcast out to the expected number of columns for
+the query.
 
 ### Args
 
-<ParamField query="style" type="str" default="passage">
-  The style and length of summary produced.
+<ParamField query="X" type="VARCHAR or literal<string>" required>
+  The input column containing the text to summarize.
+</ParamField>
+
+ <ParamField query="style" type="VARCHAR or literal<string>", default='extractive'>
+  The style of summary produced. Options = `{'extractive', 'abstractive'}`.
+    - The `'extractive'` option returns summaries comprised of the most relevant 
+  and important text that is already present in the given text.
+    - The `'abstractive'` option returns summaries comprised of new, generated text
+   that clearly and succintely captures the meaning and essence of the given text. 
+</ParamField>
+  
+<ParamField query="style" type="VARCHAR or literal<string>", default='passage'>
+  The style and length of summary produced. Options = `{'passage', 'sentence', 'bullets'}`.
+  The `'passage'` option will return 
+  The `'linear'` option selects a generalized linear model.
+  The `'dnn'` option selects a fully-connected feed-forward deep neural net.
 </ParamField>
 
 ### Example
 
 ```sql
 SELECT SUMMARIZE(review_text) FROM product_reviews_table;
+```
+```sql
+SELECT SUMMARIZE(review_text, ty) FROM product_reviews_table;
 ```
