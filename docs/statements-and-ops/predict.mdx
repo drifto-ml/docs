@@ -2,14 +2,34 @@
 title: "PREDICT"
 ---
 
-`PREDICT (T)`: This is a table-valued function (TVF). T should be a table and
-this function returns a table. It should be used in a `FROM` clause. This
-operation returns predictions and confidence scores for each row in T based on
-running model mymodel. The name mymodel can also be a string literal and it
-should be an exact match to the model name in the MLflow registry.
+`PREDICT(<MODEL>, <TABLE>)`: This operation returns predictions and
+confidence scores for each row in `<TABLE>` based on running `<MODEL>`.
+
+This is a table-valued function (TVF).It should be used in a `FROM` 
+clause. The input model should already exist (see [CREATE MODEL](https://docs.driftodata.com/statements-and-ops/create-model).
+The input table should match the columns used to train the input 
+model (the target column can be ommitted). 
+
+### Syntax
+
+```sql
+SELECT * FROM PREDICT(<MODEL>, <TABLE>);
+```
+
+### Args
+
+<ParamField query="<MODEL>" type="literal or string">
+  The name of the trained model to use for inference.
+</ParamField>
+
+<ParamField query="<TABLE>" type="literal">
+  The name of the table over which to compute model predictions.
+</ParamField>
+
 
 ### Example
 
 ```sql
-SELECT \* FROM PREDICT(mymodel, datatable);
+CREATE MODEL my_model AS SELECT * FROM train_data;
+SELECT * FROM PREDICT(my_model, predict_data);
 ```
