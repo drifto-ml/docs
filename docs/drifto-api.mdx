@@ -5,14 +5,6 @@ description: "Drifto's SQL interprets standard SQL 2003 statements and operation
 
 Data selection statements in Drifto should be of this general form:
 
-`SELECT <SELECTOR>`
-`FROM <TABLE>`
-`JOIN <TABLE>`
-`ON <COLUMN>`
-`WHERE <CLAUSE>`
-`GROUP BY <COLUMNS>`
-`HAVING <CLAUSE>`
-`ORDER BY <COLUMNS>`
-`LIMIT <INT>;`
+`SELECT <COLUMNS> FROM <TABLE> JOIN <TABLE> ON <COLUMN> WHERE <CLAUSE> GROUP BY <COLUMNS> HAVING <CLAUSE> ORDER BY <COLUMNS> LIMIT <INT>;`
 
 While Drifto aims to support all standard SQL, many warehouses and query engines come with additional or special operations or commands that Drifto can not support. Concretely, this means that you cannot use both a Drifto-specific operation or function in the same command that uses an operation or function that is particular to your platform. The usual workaround is to just split the query up into two or more sequential queries with materializtions in between as necessary.
