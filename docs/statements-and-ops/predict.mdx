@@ -5,7 +5,7 @@ title: "PREDICT"
 `PREDICT(<MODEL>, <TABLE>)`: This operation returns predictions and
 confidence scores for each row in `<TABLE>` based on running `<MODEL>`.
 
-This is a table-valued function (TVF).It should be used in a `FROM` 
+This is a table-valued function (TVF). It should be used in a `FROM` 
 clause. The input model should already exist (see [CREATE MODEL](https://docs.driftodata.com/statements-and-ops/create-model).
 The input table should match the columns used to train the input 
 model (the target column can be ommitted). 
