@@ -21,7 +21,7 @@ column to be called `target`.
 ### Syntax
 
 ```sql
-CREATE MODEL<model> WITH (**kwargs) AS <select>;
+CREATE MODEL<model> WITH (**kwargs) AS <SELECT>;
 ```
 
 ### Args
@@ -59,9 +59,13 @@ CREATE MODEL<model> WITH (**kwargs) AS <select>;
 ### Example
 
 ```sql
-CREATE MODEL my_model WITH (target=y, max_models=10) AS SELECT \* FROM mydata;
+CREATE MODEL my_model 
+WITH (target=y, max_models=10) 
+AS SELECT * FROM mydata;
 ```
 
 ```sql
-CREATE MODEL my_other_model WITH (max_models=1, algo='linear') AS SELECT * FROM mydata;
+CREATE MODEL OR REPLACE my_other_model 
+WITH (max_models=1, algo='linear') 
+AS SELECT * FROM mydata;
 ```
