@@ -11,23 +11,25 @@ the query.
 
 ### Args
 
-<ParamField query="X" type="VARCHAR or literal<string>" required>
+<ParamField query="X" type="VARCHAR or string" required>
   The input column containing the text to summarize.
 </ParamField>
 
- <ParamField query="style" type="VARCHAR" default='extractive'>
-  The style of summary produced. Options = `{'extractive', 'abstractive'}`.
+ <ParamField query="style" type="string" default='extractive'>
+  The style of the summary produced. 
+    Options = `{'extractive', 'abstractive'}`.
     - The `'extractive'` option returns summaries comprised of the most relevant 
   and important text that is already present in the given text.
     - The `'abstractive'` option returns summaries comprised of new, generated text
    that clearly and succintely captures the meaning and essence of the given text. 
 </ParamField>
   
-<ParamField query="style" type="VARCHAR" default='passage'>
-  The style and length of summary produced. Options = `{'passage', 'sentence', 'bullets'}`.
-  The `'passage'` option will return 
-  The `'linear'` option selects a generalized linear model.
-  The `'dnn'` option selects a fully-connected feed-forward deep neural net.
+<ParamField query="format" type="string" default='passage'>
+  The length and format of the summary produced. 
+    Options = `{'passage', 'sentence', 'bullets'}`.
+    - The `'passage'` option will return 
+    - The `'sentence'` option selects a generalized linear model.
+    - The `'bullets'` option selects a fully-connected feed-forward deep neural net.
 </ParamField>
 
 ### Example
@@ -36,5 +38,6 @@ the query.
 SELECT SUMMARIZE(review_text) FROM product_reviews_table;
 ```
 ```sql
-SELECT SUMMARIZE(review_text, ty) FROM product_reviews_table;
+SELECT SUMMARIZE(review_text, style='abstractive', format='bullets')
+FROM product_reviews_table;
 ```
