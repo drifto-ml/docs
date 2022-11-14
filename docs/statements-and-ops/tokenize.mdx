@@ -36,3 +36,11 @@ SELECT TOKENIZE(call_transcript) FROM calls_table;
 -- Therefore, this returns a table with more rows than calls_table.
 SELECT UNNEST(TOKENIZE(call_transcript)) FROM calls_table;
 ```
+
+```sql
+SELECT TOKENIZE(call_transcript, window=8, stride=4) FROM calls_table;
+```
+
+```sql
+SELECT TOKENIZE(call_transcript, splits=8) FROM calls_table;
+```
