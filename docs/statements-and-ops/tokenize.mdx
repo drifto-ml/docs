@@ -1,30 +1,38 @@
 ---
-title: "Tokenize"
+title: "TOKENIZE"
 ---
 
-`TOKENIZE(X, **kwargs)`: This is an element-wise column operation. X should be a
-column of texts. This operation tokenizes long texts into token windows of a
-given length with a given stride. Alternatively, one can specify the exact
-number of splits to tokenize the long texts into. This operation returns an
-array-valued column that can be exploded with an unnesting operation.
+`TOKENIZE(<X>, **kwargs)`: This operation tokenizes long texts into token windows of a
+given length with a given stride. This is an element-wise column operation. 
+`X` should be a `VARCHAR` column. Each row is treated and tokenized as an independent long text.
+ 
+Alternatively, one can specify the exact number of splits to tokenize the long texts into.
+This operation returns an array-valued column that can be exploded with an unnesting operation.
 
 ### Args
 
-<ParamField query="window" type="int" default="1">
+<ParamField query="window" type="VARCHAR" default="1">
   The length of the tokenization window.
 </ParamField>
 
-<ParamField query="stride" type="int" default="1">
+<ParamField query="stride" type="VARCHAR" default="1">
   The stride of the tokenization.
 </ParamField>
 
-<ParamField query="splits" type="int" default="-1">
+<ParamField query="splits" type="VARCHAR" default="-1">
   An alternative way to specify the number of splits the tokenizer produces.
 </ParamField>
 
 ### Examples
 
 ```sql
+-- This returns an array-valued column. 
+-- Each row containts the tokens for one input row.
 SELECT TOKENIZE(call_transcript) FROM calls_table;
+```
+
+```sql
+-- This explodes each token into an individual row.
+-- Therefore, this returns a table with more rows than calls_table.
 SELECT UNNEST(TOKENIZE(call_transcript)) FROM calls_table;
 ```
