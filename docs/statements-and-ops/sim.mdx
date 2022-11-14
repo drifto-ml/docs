@@ -2,7 +2,7 @@
 title: "SIM"
 ---
 
-`SIM (<X>,<Y>)`: This operation computes a symmetric semantic similarity score between `<X>` and `<Y>`. This score captures how similar two  This is an element-wise column-valued operation.
+`SIM (<X>,<Y>)`: This operation computes a symmetric semantic similarity score between `<X>` and `<Y>`. This is an element-wise column-valued operation.
 
 Both arguments may be columns (of type VARCHAR) or strings (literals). If an argument is a string literal, it broadcasts the string out to the column argument. If both arguments are strings,
 they are both broadcast out to the expected number of rows based on the table.
