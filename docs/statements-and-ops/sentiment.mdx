@@ -2,19 +2,35 @@
 title: "SENTIMENT"
 ---
 
-`SUMMARIZE(X)`: This is an element-wise column operation. The column contains a
-corpus of texts, with each text occupying one row. This operation computes
-summaries for all texts in the corpus.
+`SENTIMENT(<X>)`: This operation computes a semantic sentiment score for given text.
+This is an element-wise column operation. The text in each row recieves an independent sentiment score.
+The sentiment score is real-valued and between -1 and 1. A score greater than zero indicates positive sentiment 
+and a score less than zero indicates a negative sentiment. The strength of the sentiment is reflected in
+the magnitude (absolute value) of the score. Thus, scores near zero are neutral or close to neutral sentiment.
 
 ### Args
 
-<ParamField query="style" type="str" default="passage">
-  The style and length of summary produced. Options = `
-  {("paragraph", "sentence", "bullets")}`.
+<ParamField query="X" type="VARCHAR">
+  The input column containing the text over which sentiment scores are computed.
 </ParamField>
 
 ### Examples
 
 ```sql
-SELECT SUMMARIZE(review_text) FROM product_reviews_table;
+SELECT SENTIMENT(review_text) FROM product_reviews_table;
+```
+
+
+```sql
+-- Positive sentiment
+SELECT SENTIMENT(review_text) AS sent FROM product_reviews_table
+WHERE sent > 0.0;
+
+-- Negative sentiment
+SELECT SENTIMENT(review_text) AS sent FROM product_reviews_table
+WHERE sent < 0.0;
+
+-- Neutral (or close to neutral) sentiment
+SELECT SENTIMENT(review_text) AS sent FROM product_reviews_table
+WHERE sent < 0.1 AND sent > -0.1;
 ```
