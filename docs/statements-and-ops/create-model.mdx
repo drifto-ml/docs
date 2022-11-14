@@ -18,6 +18,8 @@ each column is a feature. The `WITH` clause is optional but for ML training
 and each column is a feature. The `WITH` clause is optional but the target 
 column to be called `target`.
 
+The ML training routine automatically s
+
 ### Syntax
 
 ```sql
@@ -26,11 +28,11 @@ CREATE MODEL <model> WITH (**kwargs) AS <SELECT>;
 
 ### Args
 
-<ParamField query="target" type="column or literal" default="target">
+<ParamField query="target" type="column or string literal" default="target">
   The name of the target column.
 </ParamField>
 
-<ParamField query="algo" type="column or literal" default="auto">
+<ParamField query="algo" type="string literal" default="auto">
   The training algorithm. Options = `{'auto', 'gbm', 'linear', 'dnn'}`.
     - The `'auto'` option selects an autoML routine that will try multiple
   different algorithms and hyperparameters and select the best one.
@@ -39,20 +41,22 @@ CREATE MODEL <model> WITH (**kwargs) AS <SELECT>;
     - The `'dnn'` option selects a fully-connected feed-forward deep neural net.
 </ParamField>
 
-<ParamField query="ensemble" type="bool" default="false">
+<ParamField query="ensemble" type="boolean literal" default="false">
   Allow autoML algorithm to generate model ensembles.
 </ParamField>
 
-<ParamField query="max_models" type="int" default="3">
+<ParamField query="max_models" type="int literal" default="3">
   Number of models to search for in a training algorithm.
 </ParamField>
 
-<ParamField query="seed" type="int" default="1">
+<ParamField query="seed" type="int literal" default="1">
   Random seed to use.
 </ParamField>
 
-<ParamField query="num_folds" type="int" default="5">
-  Number of cross validation folds to use. Default = 5.
+<ParamField query="sort_metric" type="string literal" default="5">
+  The figure-of-merit used to select the best model.
+  Options (Classification) = `{'auc', 'accu', 'logloss'}`.
+  Options (Regression) = `{'mse', 'mae', }`
 </ParamField>
 
 

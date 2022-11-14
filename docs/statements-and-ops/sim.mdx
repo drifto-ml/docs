@@ -4,20 +4,22 @@ title: "SIM"
 
 `SIM (<X>,<Y>)`: This operation computes a symmetric semantic similarity score between `<X>` and `<Y>`. This score captures how similar two  This is an element-wise column-valued operation.
 
-Both arguments may be columns or strings. If an argument is a string, it broadcasts the string out to the column argument. If both arguments are strings,
-they are both broadcast out to the expected number of rows based on the
-table.
+Both arguments may be columns (of type VARCHAR) or strings (literals). If an argument is a string literal, it broadcasts the string out to the column argument. If both arguments are strings,
+they are both broadcast out to the expected number of rows based on the table.
 
-The semantic similarity score 
-
-It is always between -1 and 1. A score of
-greater than 0.3 indicates that two texts are similar and a score greater than
-0.4 indicates that two texts are highly similar.
+The semantic similarity score represents and inner product and is thus always between -1 and 1. A score of
+greater than `0.3` indicates that two texts are similar and a score greater than
+`0.4` indicates that two texts are highly similar. Texts that are nearly exact matches can obtain similarities of 
+over `0.5`. Scores less than `0.1` indicate no particular similarity or semantic relationships between the texts.
 
 ### Args
 
-<ParamField query="X" type="VARCHAR">
+<ParamField query="X" type="`VARCHAR` or `str` (literal)">
   The first arugment for the semantic similarity score. `X` must be a column of type `VARCHAR` or a `VARCHAR` literal.
+</ParamField>
+
+<ParamField query="Y" type="VARCHAR or string literal">
+  The second arugment for the semantic similarity score. `Y` must be a column of type `VARCHAR` or a  string literal.
 </ParamField>
 
 ### Example
