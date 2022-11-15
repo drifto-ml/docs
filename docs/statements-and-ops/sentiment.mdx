@@ -2,7 +2,7 @@
 title: "SENTIMENT"
 ---
 
-`SENTIMENT(<X>)`: This operation computes a semantic sentiment score for given text.
+`SENTIMENT(<COLUMN>)`: This operation computes a semantic sentiment score for given text.
 This is an element-wise column operation. The text in each row recieves an independent sentiment score.
 The sentiment score is real-valued and between -1 and 1. A score greater than zero indicates positive sentiment 
 and a score less than zero indicates a negative sentiment. The strength of the sentiment is reflected in
@@ -16,7 +16,7 @@ SELECT SENTIMENT(<COLUMN>) FROM <TABLE>;
 
 ### Args
 
-<ParamField query="X" type="VARCHAR">
+<ParamField query="<COLUMN>" type="VARCHAR">
   The input column containing the text over which sentiment scores are computed.
 </ParamField>
 

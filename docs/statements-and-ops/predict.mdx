@@ -13,16 +13,16 @@ model (the target column can be ommitted).
 ### Syntax
 
 ```sql
-SELECT * FROM PREDICT(<MODEL>, <TABLE>);
+SELECT <COLUMNS> FROM PREDICT(<MODEL>, <TABLE>);
 ```
 
 ### Args
 
-<ParamField query="<MODEL>" type="literal or string">
+<ParamField query="MODEL" type="model or str (literal)">
   The name of the trained model to use for inference.
 </ParamField>
 
-<ParamField query="<TABLE>" type="literal">
+<ParamField query="TABLE" type="table or str (literal)">
   The name of the table over which to compute model predictions.
 </ParamField>
 

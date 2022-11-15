@@ -1,12 +1,19 @@
 ---
-title: "Tag"
+title: "TAG"
 ---
 
-`TAG(‘a,b,c‘, X, **kwargs)`: This is a table-valued function (TVF). The first
+`TAG(<T_1>, ... <T_K>, <COLUMN>)`: This is a table-valued function (TVF). The first
 argument is a literal string that should be a comma-separated list of tags. X
 should be a table column. This operation runs a zero-shot NLP tagging operation
 that determines if each label in the first argument applies to each row in
 column X. The generated table includes confidence scores for each tag.
+
+
+
+```sql
+SELECT <COLUMNS> 
+FROM TAG(<T_1>, ... <T_K>, <COLUMN>);
+```
 
 ### Args
 

@@ -4,16 +4,21 @@ title: "SUMMARIZE"
 
 <Warning>This is an experimental op and is subject to change.</Warning>
 
-`SUMMARIZE(<X>, **kwargs)`: This operation summarizes the text in each row of the column. 
+`SUMMARIZE(<COLUMN>, **kwargs)`: This operation summarizes the text in each row of the column. 
 This is an element-wise column operation, so each row will be summarized independently.
-If `<X>` is a string literal, it is broadcast out to the expected number of columns for
-the query.
+
+```sql
+SELECT SUMMARIZE(<COLUMN>, **kwargs) FROM <TABLE>;
+```
 
 ### Args
 
-<ParamField query="X" type="VARCHAR or literal<string>" required>
+<ParamField query="COLUMN" type="VARCHAR" required>
   The input column containing the text to summarize.
 </ParamField>
+
+
+### Keyword Args
 
  <ParamField query="style" type="VARCHAR" default='extractive'>
   The style of summary produced. Options = `{'extractive', 'abstractive'}`.
@@ -23,11 +28,12 @@ the query.
    that clearly and succintely captures the meaning and essence of the given text. 
 </ParamField>
   
-<ParamField query="style" type="VARCHAR" default='passage'>
-  The style and length of summary produced. Options = `{'passage', 'sentence', 'bullets'}`.
-  The `'passage'` option will return 
-  The `'linear'` option selects a generalized linear model.
-  The `'dnn'` option selects a fully-connected feed-forward deep neural net.
+<ParamField query="format" type="VARCHAR" default='passage'>
+  The length and format of summary produced. 
+  Options = `{'passage', 'sentence', 'bullets'}`.
+  The `'passage'` option returns a shirt passage.
+  The `'sentence'` option returns a single sentence.
+  The `'bullets'` option returns one to five bullet points.
 </ParamField>
 
 ### Example
