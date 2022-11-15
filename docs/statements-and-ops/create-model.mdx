@@ -18,7 +18,8 @@ each column is a feature. The `WITH` clause is optional but for ML training
 and each column is a feature. The `WITH` clause is optional but the target 
 column to be called `target`.
 
-The ML training routine automatically s
+The ML training routine will train and validate a variety of ML architectures.
+You can control this automated model search with argument flags.  
 
 ### Syntax
 
@@ -33,7 +34,8 @@ CREATE MODEL <model> WITH (**kwargs) AS <SELECT>;
 </ParamField>
 
 <ParamField query="algo" type="string literal" default="auto">
-  The training algorithm. Options = `{'auto', 'gbm', 'linear', 'dnn'}`.
+  The training algorithm. 
+  Options = `{'auto', 'gbm', 'linear', 'dnn'}`.
     - The `'auto'` option selects an autoML routine that will try multiple
   different algorithms and hyperparameters and select the best one.
     - The `'gbm'` option selects a gradient-boosting algorithm.
@@ -46,7 +48,7 @@ CREATE MODEL <model> WITH (**kwargs) AS <SELECT>;
 </ParamField>
 
 <ParamField query="max_models" type="int literal" default="3">
-  Number of models to search for in a training algorithm.
+  Maximum number of models to search for in an ML training routine.
 </ParamField>
 
 <ParamField query="seed" type="int literal" default="1">
@@ -56,7 +58,7 @@ CREATE MODEL <model> WITH (**kwargs) AS <SELECT>;
 <ParamField query="sort_metric" type="string literal" default="5">
   The figure-of-merit used to select the best model.
   Options (Classification) = `{'auc', 'accu', 'logloss'}`.
-  Options (Regression) = `{'mse', 'mae', }`
+  Options (Regression) = `{'mse', 'mae', 'r2'}`
 </ParamField>
 
 
@@ -64,11 +66,12 @@ CREATE MODEL <model> WITH (**kwargs) AS <SELECT>;
 
 ```sql
 CREATE MODEL my_model 
-WITH (target=y, max_models=10) 
+WITH (target=y, max_models=10, sort_metric='logloss') 
 AS SELECT * FROM mydata;
 ```
 
 ```sql
+-- This will overwrite an existing model.
 CREATE MODEL OR REPLACE my_other_model 
 WITH (max_models=1, algo='linear') 
 AS SELECT * FROM mydata;
