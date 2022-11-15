@@ -12,6 +12,12 @@ greater than `0.3` indicates that two texts are similar and a score greater than
 `0.4` indicates that two texts are highly similar. Texts that are nearly exact matches can obtain similarities of 
 over `0.5`. Scores less than `0.1` indicate no particular similarity or semantic relationships between the texts.
 
+### Syntax
+
+```sql
+SELECT SIM(<LITERAL> | <COLUMN>, <COLUMN> | <LITERAL>) FROM <TABLE>;
+```
+
 ### Args
 
 <ParamField query="X" type="VARCHAR or str (literal)">

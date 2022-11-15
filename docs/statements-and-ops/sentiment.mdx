@@ -8,6 +8,12 @@ The sentiment score is real-valued and between -1 and 1. A score greater than ze
 and a score less than zero indicates a negative sentiment. The strength of the sentiment is reflected in
 the magnitude (absolute value) of the score. Thus, scores near zero are neutral or close to neutral sentiment.
 
+### Syntax
+
+```sql
+SELECT SENTIMENT(<COLUMN>) FROM <TABLE>;
+```
+
 ### Args
 
 <ParamField query="X" type="VARCHAR">
