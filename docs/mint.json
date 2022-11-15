@@ -46,6 +46,7 @@
       "group": "Statements and Ops",
       "pages": [
         "statements-and-ops/create-model",
+        "statements-and-ops/show-models",
         "statements-and-ops/predict",
         "statements-and-ops/sim",
         "statements-and-ops/summarize",
