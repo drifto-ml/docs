@@ -35,12 +35,14 @@ CREATE MODEL <MODEL> WITH (**kwargs) AS <SELECT>;
 
 <ParamField query="algo" type="string literal" default="auto">
   The training algorithm. 
-  Options = `{'auto', 'gbm', 'linear', 'dnn'}`.
+  Options = `{'auto', 'gbm', 'linear', 'dnn', 'drf'}`.
     - The `'auto'` option selects an autoML routine that will try multiple
   different algorithms and hyperparameters and select the best one.
     - The `'gbm'` option selects a gradient-boosting machine (GBM) algorithm.
     - The `'linear'` option selects a generalized linear model (GLM).
     - The `'dnn'` option selects a fully-connected feed-forward deep neural net.
+    - The `'drf'` option selects a distributed random forest (DRF) architecture
+    that includes extreme random forests (XRF).
 </ParamField>
 
 <ParamField query="ensemble" type="boolean (literal)" default="false">
