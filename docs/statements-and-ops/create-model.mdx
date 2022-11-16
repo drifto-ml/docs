@@ -50,6 +50,14 @@ CREATE MODEL <MODEL> WITH (**kwargs) AS <SELECT>;
   Allow autoML algorithm to generate model ensembles.
 </ParamField>
 
+
+<ParamField query="num_folds" type="int (literal)" default="0">
+  The number of cross validation folds used in autoML. When set to 0,
+  autoML does not use cross validation and instead will subsample a 10%
+  validation and a 10% test set for validation and testing.
+</ParamField>
+
+
 <ParamField query="max_models" type="int (literal)" default="3">
   Maximum number of models to search for in an ML training routine.
 </ParamField>
