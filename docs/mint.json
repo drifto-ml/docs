@@ -51,8 +51,9 @@
         "statements-and-ops/sim",
         "statements-and-ops/sentiment",
         "statements-and-ops/tokenize",
-        "statements-and-ops/drop-model",
-        "statements-and-ops/show-models"
+        "statements-and-ops/show-models",
+        "statements-and-ops/drop-model"
+
         
       ]
     },
