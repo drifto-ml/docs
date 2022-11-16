@@ -1,0 +1,43 @@
+---
+title: "METRICS"
+---
+
+`METRICS(X)`: This function displays performance metrics for
+trained ML models.
+
+This is a table-valued function (TVF). It should be used in a `FROM` 
+clause. The argument for this function should be either the name of the
+trained model or a string literal. String literal arguments support wildcards,
+enabling this function to display the metrics for multiple ML models in one table.
+
+
+### Syntax
+
+```sql
+SELECT <COLUMNS> FROM METRICS(<MODEL> | <STRING>);
+```
+
+### Args
+
+<ParamField query="X" type="model or str (literal)">
+  The name of the trained model for which to retrieve metrics.
+  If `X` is a string literal, then wildcards may be used. 
+  In that case, the metrics for all matching model names
+  are displayed in the table.
+</ParamField>
+
+
+### Example
+
+```sql
+CREATE MODEL my_model AS SELECT * FROM train_data;
+SELECT * FROM METRICS(my_model);
+```
+
+```sql
+-- Fetch metrics for multiple models with a wildcard
+CREATE MODEL my_model_v1 AS SELECT * FROM train_data_1;
+CREATE MODEL my_model_v2 AS SELECT * FROM train_data_2;
+SELECT * FROM METRICS('my_model_v*');
+```
+

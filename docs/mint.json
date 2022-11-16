@@ -48,14 +48,9 @@
         "statements-and-ops/create-model",
         "statements-and-ops/show-models",
         "statements-and-ops/predict",
+        "statements-and-ops/metrics",
         "statements-and-ops/sim",
-        "statements-and-ops/summarize",
-        "statements-and-ops/cluster",
-        "statements-and-ops/medoids",
-        "statements-and-ops/ask",
         "statements-and-ops/sentiment",
-        "statements-and-ops/infer",
-        "statements-and-ops/tag",
         "statements-and-ops/tokenize"
       ]
     },
