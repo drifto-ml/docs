@@ -3,7 +3,9 @@ title: "METRICS"
 ---
 
 `METRICS(X)`: This function displays performance metrics for
-trained ML models.
+trained ML models. For classification tasks, these metrics are
+accuracy, logloss, and AUC. For regressions tasks, these metrics are
+MAE, MSE, RMSE, and R-Squared.
 
 This is a table-valued function (TVF). It should be used in a `FROM` 
 clause. The argument for this function should be either the name of the
@@ -27,7 +29,7 @@ SELECT <COLUMNS> FROM METRICS(<MODEL> | <STRING>);
 </ParamField>
 
 
-### Example
+### Examples
 
 ```sql
 CREATE MODEL my_model AS SELECT * FROM train_data;

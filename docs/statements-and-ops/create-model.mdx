@@ -55,14 +55,15 @@ CREATE MODEL <MODEL> WITH (**kwargs) AS <SELECT>;
   Random seed to use.
 </ParamField>
 
-<ParamField query="sort_metric" type="str (literal)" default="5">
-  The figure-of-merit used to select the best model.
+<ParamField query="sort_metric" type="str (literal)" default="accuracy or mae">
+  The figure-of-merit used to select the best model. The default is metric is
+  accuracy for classification tasks and mae for regression tasks.
   Options (Classification) = `{'auc', 'accu', 'logloss'}`.
   Options (Regression) = `{'mse', 'mae', 'r2'}`.
 </ParamField>
 
 
-### Example
+### Examples
 
 ```sql
 CREATE MODEL my_model 
