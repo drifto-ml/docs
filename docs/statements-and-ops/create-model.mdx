@@ -8,6 +8,7 @@ registry with the given name. By default, Drifto uses an internal
 [MLflow](www.mlflow.org) instance, but can be configured to use an external 
 instance as well. Like regular create statements, one should use 
 `CREATE OR REPLACE MODEL` to overwrite an existing model with the same name.
+You may also use this statement to copy a pre-existing ML model (see examples below).
 
 The `SELECT` subquery in the create statement should return the full training 
 dataset (held-out sets are automatically subsampled but can be manually specified 
@@ -79,3 +80,18 @@ CREATE MODEL OR REPLACE my_other_model
 WITH (max_models=1, algo='linear') 
 AS SELECT * FROM mydata;
 ```
+
+```sql
+-- This will overwrite an existing model.
+CREATE MODEL OR REPLACE my_other_model 
+WITH (max_models=1, algo='linear') 
+AS SELECT * FROM mydata;
+```
+
+```sql
+-- This will create a copy of my_model.
+-- Notice that here we've directly selected a model name.
+CREATE MODEL my_model_copy 
+AS SELECT my_model;
+```
+
