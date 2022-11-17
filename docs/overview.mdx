@@ -11,16 +11,15 @@ As of November 2022, Drifto brings 8 new AI-powered ops to your SQL interface wi
 
 Drifto operates as a query engine. This means that your data and model storage
 is not managed by Drifto. Rather, your data is stored either in your warehouse,
-data lake or simple storage buckets, and your models are stored in a model
-registry like MLflow. This enables Drifto to be a lightweight (but specialized
-and powerful) compute system on top of your existing data stack rather than a 
-new system that needs a heavy integration and migration.
+data lake or simple storage buckets. This enables Drifto to be a lightweight 
+(but specialized and powerful) compute system on top of your existing data stack 
+rather than a new system that needs a heavy integration and migration.
 
 When you issue a query to Drifto, the parser will split the query into
 analytical and neural subqueries. Drifto then forwards the analytical subquery
-to your underlying analytical query engine, such as your data warehouse, while
+to your underlying analytical engine, such as your data warehouse, while
 processing the neural subquery on a specialized distributed AI fleet. When the
-subqueries complete, Drifto merges the two subquery results into one single
+subqueries complete, Drifto merges the subquery results into one single
 result.
 
 ## Environments
@@ -30,7 +29,7 @@ integration protocol, so it integrates seamlessly anywhere SQL runs, such as
 your favorite BI tool like Tableau or Mode, or a dbt pipeline. 
 Drifto is also directly accessible through the [Trino CLI](https://trino.io/docs/current/client/cli.html).
 
-Currently, Drifto works with the following backend query engines / warehouses:
+Currently, Drifto works with the following backend warehouses:
 
 <CardGroup>
   <Card
